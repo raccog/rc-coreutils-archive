@@ -1,4 +1,4 @@
-CFLAGS ?= -g -O3 -Wall -Wextra -Wpedantic -std=c17
+CFLAGS ?= -g -O3 -Wall -Wextra -std=c17
 
 BUILD_DIR ?= build
 BIN_FILES := cat
