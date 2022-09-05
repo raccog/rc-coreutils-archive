@@ -1,8 +1,9 @@
-CFLAGS ?= -g -O3 -Wall -Wextra -std=c17
+CFLAGS ?= -g -Os
+override INTERNAL_CFLAGS := -Wall -Wextra -std=c17
 
 BUILD_DIR ?= build
-BIN_FILES := cat
-BINARY := $(patsubst %, $(BUILD_DIR)/%, $(BIN_FILES))
+override BIN_FILES := cat
+override BINARY := $(patsubst %, $(BUILD_DIR)/%, $(BIN_FILES))
 
 .PHONY: all
 all: $(BINARY)
@@ -13,6 +14,6 @@ clean:
 
 $(BUILD_DIR)/%: src/%.c
 	mkdir -p $(@D)
-	gcc $(CFLAGS) $< -o $@
+	gcc $(CFLAGS) $(INTERNAL_CFLAGS) $< -o $@
 
 
